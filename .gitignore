@@ -1,2 +1,3 @@
 *.pyc
 trainlog/database
+venv

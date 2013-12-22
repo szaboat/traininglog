@@ -1,3 +1,0 @@
-- [ ] UserProfile
-- [ ] weekly view
-- [ ] strava import

@@ -1,4 +1,6 @@
 from django.template.response import TemplateResponse
+from django.http import HttpResponseNotFound
+from django.views.generic import WeekArchiveView
 from diary.models import Entry
 
 def index(request):
@@ -7,3 +9,16 @@ def index(request):
         'entries': entries
     }
     return TemplateResponse(request, 'index.html', context=context)
+
+def user_view(request, user_name):
+    entries = Entry.objects.filter(user__username=user_name)
+    if entries:
+        context = {
+            'entries': entries
+        }
+    else:
+        return HttpResponseNotFound()
+    return TemplateResponse(request, 'index.html', context=context)
+
+def home(request):
+    return TemplateResponse(request, 'home.html')

@@ -1,0 +1,4 @@
+- UserProfile
+- Heroku deployment
+- weekly view
+- strava import

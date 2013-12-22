@@ -1,11 +1,27 @@
 {% extends 'layout.html'%}
 
 {% block content %}
-    {% for entry in entries %}
-        <p>
-            {{ entry.name }}
-            {{ entry.weight }}
-        </p>
-    {% endfor %}
+    <table border="1" cellpadding="1">
+        <thead>
+            <tr>
+                <td>Date</td>
+                <td>Name</td>
+                <td>Weight</td>
+                <td>Heart rate</td>
+                <td>Description</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries %}
+                <tr>
+                    <td>{{ entry.created|date:"Y/m/d - D" }}</td>
+                    <td>{{ entry.name }}</td>
+                    <td>{{ entry.weight }}</td>
+                    <td>{{ entry.resting_heart_rate }}</td>
+                    <td>{{ entry.description }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
 

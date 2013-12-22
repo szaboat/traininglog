@@ -1,6 +1,6 @@
-from django.conf.urls.defaults import patterns
-from diary.views import index
+from django.conf.urls import patterns
+from diary.views import index, home
 
 urlpatterns = patterns('',
-    (r'^$', index),
+    (r'^$', home),
 )

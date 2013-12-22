@@ -14,5 +14,6 @@ class Entry(models.Model):
     strava_link = models.CharField(max_length=255, blank=True)
     description = models.TextField(blank=True)
     created = models.DateField(auto_now=True)
+    skipped = models.BooleanField()
 
     user = models.ForeignKey(User)

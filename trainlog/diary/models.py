@@ -47,3 +47,6 @@ class Entry(models.Model):
     mood_during_workout = models.IntegerField(choices=QUALITY, blank=True, null=True) # TODO choice
 
     description = models.TextField()
+
+    def __unicode__(self):
+        return u'%s %s' % (self.name, self.user)

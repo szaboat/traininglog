@@ -37,7 +37,7 @@ class Entry(models.Model):
     ga2_plus = models.IntegerField(blank=True, null=True) # seconds
     cal = models.IntegerField(blank=True, null=True)
     duration = models.IntegerField(blank=True, null=True) # seconds
-    length = models.IntegerField(blank=True, null=True) # kms
+    length = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # kms
     cadence_avg = models.IntegerField(blank=True, null=True)
     cadence_max = models.IntegerField(blank=True, null=True)
     speed_avg = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)

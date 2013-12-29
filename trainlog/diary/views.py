@@ -1,6 +1,7 @@
 from django.template.response import TemplateResponse
 from django.http import HttpResponseNotFound
 from django.views.generic import WeekArchiveView
+
 from diary.models import Entry
 
 def index(request):
@@ -19,6 +20,15 @@ def user_view(request, user_name):
     else:
         return HttpResponseNotFound()
     return TemplateResponse(request, 'index.html', context=context)
+
+
+class WeeklyView(WeekArchiveView):
+    queryset = Entry.objects.all()
+    date_field = "created"
+    year = '2013'
+    week_format = '%W'
+
+weekly_view = WeeklyView.as_view()
 
 def home(request):
     return TemplateResponse(request, 'home.html')

@@ -2,6 +2,7 @@
 
 {% block content %}
     <h2>{{ week|date:"Y/W" }}</h2>
+    {% comment %}
     {% for entry in object_list %}
         <ul>
             <li><strong>{% if entry.skipped %}<span class="skip">✖</span>{% else %}✔{% endif %} {{ entry.created|date:"M j, - D" }}</strong></li>
@@ -21,4 +22,142 @@
             <li><p class="note">{{ entry.description }}</p></li>
         </ul>
     {% endfor %}
+    {% endcomment %}
+
+    <table>
+        <thead>
+            <tr class="header">
+                <th>Date</th>
+                {% for entry in object_list %}
+                    <th>{% if entry.skipped %}<span class="skip">✖</span>{% else %}✔{% endif %} {{ entry.created|date:"M j, - D" }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="base">
+                <th>Name</th>
+                {% for entry in object_list %}
+                    <td>{{ entry.name }}</td>
+                {% endfor %}
+            </tr>
+
+            <tr class="base">
+                <th>Weight</th>
+                {% for entry in object_list %}
+                    <td>{{ entry.weight }} kg</td>
+                {% endfor %}
+            </tr>
+
+            <tr class="base">
+                <th>Resting Heart Rate</th>
+                {% for entry in object_list %}
+                    <td>{{ entry.resting_heart_rate }} bpm</td>
+                {% endfor %}
+            </tr>
+
+            <tr class="base">
+                <th>Sleep</th>
+                {% for entry in object_list %}
+                    <td>{{ entry.sleep_hours }} h</td>
+                {% endfor %}
+            </tr>
+
+            <tr class="base">
+                <th>Sleep quality</th>
+                {% for entry in object_list %}
+                    <td>{{ entry.sleep_quality }}</td>
+                {% endfor %}
+            </tr>
+
+            <tr class="workout">
+                <th>Strava</th>
+                {% for entry in object_list %}
+                    <td>
+                        {% if entry.strava_link %}
+                            <a href="{{ entry.strava_link }}">Link</a>
+                        {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr class="workout">
+                <th>HR max</th>
+                {% for entry in object_list %}
+                    <td>
+                        {% if entry.hr_max %} {{ entry.hr_max }} {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr class="workout">
+                <th>HR avg</th>
+                {% for entry in object_list %}
+                    <td>
+                        {% if entry.hr_avg %} {{ entry.hr_avg }} {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr class="workout">
+                <th>Distance</th>
+                {% for entry in object_list %}
+                    <td>
+                        {% if entry.length %} {{ entry.length }} km {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr class="workout">
+                <th>Speed avg</th>
+                {% for entry in object_list %}
+                    <td>
+                        {% if entry.speed_avg %} {{ entry.speed_avg }} km/h {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr class="workout">
+                <th>Speed max</th>
+                {% for entry in object_list %}
+                    <td>
+                        {% if entry.speed_max %} {{ entry.speed_max }} km/h {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr class="workout">
+                <th>Duration</th>
+                {% for entry in object_list %}
+                    <td>
+                        {% if entry.duration %} {{ entry.duration }} {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr class="mood">
+                <th>Mood</th>
+                {% for entry in object_list %}
+                    <td>
+                        {% if entry.mood %} {{ entry.mood }} {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr class="mood">
+                <th>Mood during workout</th>
+                {% for entry in object_list %}
+                    <td>
+                        {% if entry.mood_during_workout %} {{ entry.mood_during_workout }} {% endif %}
+                    </td>
+                {% endfor %}
+            </tr>
+
+            <tr class="comment">
+                <th>Description</th>
+                {% for entry in object_list %}
+                    <td class="note">{{ entry.description }}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
 {% endblock %}

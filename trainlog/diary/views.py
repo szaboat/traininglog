@@ -25,7 +25,7 @@ def user_view(request, user_name):
 
 
 class WeeklyView(WeekArchiveView):
-    queryset = Entry.objects.all()
+    queryset = Entry.objects.all().order_by('created')
     date_field = "created"
     week_format = '%W'
     allow_future = True

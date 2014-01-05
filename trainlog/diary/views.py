@@ -29,6 +29,10 @@ class WeeklyView(WeekArchiveView):
     date_field = "created"
     week_format = '%W'
     allow_future = True
+    allow_empty = True
+    def get_context_data(self, **kwargs):
+        context = super(WeeklyView, self).get_context_data(**kwargs)
+        return context
 
 weekly_view = WeeklyView.as_view()
 

@@ -1,29 +1,8 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <h2>{{ week|date:"Y/W" }}</h2>
-    {% comment %}
-    {% for entry in object_list %}
-        <ul>
-            <li><strong>{% if entry.skipped %}<span class="skip">✖</span>{% else %}✔{% endif %} {{ entry.created|date:"M j, - D" }}</strong></li>
-            <li>{{ entry.name }}</li>
-            <li>{{ entry.weight }} kg</li>
-            <li>{{ entry.resting_heart_rate }} bpm</li>
-            <li>{{ entry.sleep_hours }}h sleep ({{ entry.sleep_quality }})</li>
-            {% if entry.strava_link %}
-                <li><a href="{{ entry.strava_link }}">link</a></li>
-                {% if entry.length %}
-                    <li>{{ entry.length }} km</li>
-                {% endif %}
-                {% if entry.hr_avg %}
-                    <li>HR: {{ entry.hr_avg }} avg, {{ entry.hr_max }} max</li>
-                {% endif %}
-            {% endif %}
-            <li><p class="note">{{ entry.description }}</p></li>
-        </ul>
-    {% endfor %}
-    {% endcomment %}
-
+    <!-- todo szaboat: substract one day -->
+    <h2>{{ week|date:"Y/m/d" }} - {{ next_week |date:"Y/m/d" }}</h2>
     <table>
         <thead>
             <tr class="header">

@@ -1,6 +1,6 @@
 from django.template.response import TemplateResponse
 from django.http import HttpResponseNotFound
-from django.views.generic import WeekArchiveView
+from django.views.generic import WeekArchiveView, RedirectView
 
 from diary.models import Entry
 
@@ -39,3 +39,6 @@ weekly_view = WeeklyView.as_view()
 
 def home(request):
     return TemplateResponse(request, 'home.html')
+
+class RedirectToAdmin(RedirectView):
+    url = '/admin/diary/entry/add/'

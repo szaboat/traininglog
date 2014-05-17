@@ -26,8 +26,8 @@ class Entry(models.Model):
         (1, 'Bad'),
     )
     sleep_quality = models.IntegerField(choices=QUALITY, blank=True, null=True)
-    resting_heart_rate = models.IntegerField(blank=True, null=True)
-    weight = models.DecimalField(max_digits=4, decimal_places=1, blank=True, null=True)
+    resting_heart_rate = models.IntegerField(null=True)
+    weight = models.DecimalField(max_digits=4, decimal_places=1, null=True)
 
     strava_link = models.CharField(max_length=255, blank=True)
     hr_avg = models.IntegerField(blank=True, null=True)

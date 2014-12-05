@@ -32,9 +32,6 @@ class Entry(models.Model):
     strava_link = models.CharField(max_length=255, blank=True)
     hr_avg = models.IntegerField(blank=True, null=True)
     hr_max = models.IntegerField(blank=True, null=True)
-    ga1 = models.IntegerField(blank=True, null=True) # seconds
-    ga2 = models.IntegerField(blank=True, null=True) # seconds
-    ga2_plus = models.IntegerField(blank=True, null=True) # seconds
     cal = models.IntegerField(blank=True, null=True)
     duration = models.IntegerField(blank=True, null=True) # seconds
     length = models.DecimalField(max_digits=5, decimal_places=1, blank=True, null=True) # kms

@@ -124,6 +124,7 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'diary',
     'perfdiag',
+    'sync',
 )
 
 # A sample logging configuration. The only tangible logging

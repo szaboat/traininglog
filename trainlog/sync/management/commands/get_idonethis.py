@@ -32,7 +32,7 @@ class Command(BaseCommand):
                     'name': '',
                     'created': done['done_date'],
                     'skipped': False,
-                    'entry_type': 'workout',
+                    'entry_type': 'W',
                     'sleep_hours': '0',
                     'sleep_quality': '3',
                     'resting_heart_rate': '0',

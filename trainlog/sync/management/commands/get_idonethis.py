@@ -29,15 +29,7 @@ class Command(BaseCommand):
             for done in dones['results']:
                 entry_params = {
                     'user': user,
-                    'name': '',
                     'created': done['done_date'],
-                    'skipped': False,
-                    'entry_type': 'W',
-                    'sleep_hours': '0',
-                    'sleep_quality': '3',
-                    'resting_heart_rate': '0',
-                    'weight': '0',
-                    'mood': '0',
                     'description': done['raw_text'],
                 }
                 Entry.objects.get_or_create(**entry_params)

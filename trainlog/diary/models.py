@@ -8,7 +8,7 @@ class Entry(models.Model):
 
     name = models.CharField(max_length=255, blank=True, null=True)
     created = models.DateField(blank=True, null=True)
-    skipped = models.BooleanField(blank=True, null=True)
+    skipped = models.BooleanField(blank=True, default=False)
 
     TYPE = (
         ('W', 'Workout'),

@@ -6,9 +6,9 @@ from django.contrib.auth.models import User
 class Entry(models.Model):
     user = models.ForeignKey(User)
 
-    name = models.CharField(max_length=255)
-    created = models.DateField()
-    skipped = models.BooleanField()
+    name = models.CharField(max_length=255, blank=True, null=True)
+    created = models.DateField(blank=True, null=True)
+    skipped = models.BooleanField(blank=True, null=True)
 
     TYPE = (
         ('W', 'Workout'),
@@ -26,7 +26,7 @@ class Entry(models.Model):
         (1, 'Bad'),
     )
     sleep_quality = models.IntegerField(choices=QUALITY, blank=True, null=True)
-    resting_heart_rate = models.IntegerField(null=True)
+    resting_heart_rate = models.IntegerField(null=True, blank=True)
     weight = models.DecimalField(max_digits=4, decimal_places=1, null=True)
 
     strava_link = models.CharField(max_length=255, blank=True)
@@ -40,7 +40,7 @@ class Entry(models.Model):
     speed_avg = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
     speed_max = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
 
-    mood = models.IntegerField(choices=QUALITY)
+    mood = models.IntegerField(choices=QUALITY, blank=True, null=True)
     mood_during_workout = models.IntegerField(choices=QUALITY, blank=True, null=True)
 
     description = models.TextField(blank=True, null=True)

@@ -28,7 +28,7 @@ class Command(BaseCommand):
 
             texts = []
             for done in dones['results']:
-                texts.add(done['raw_text'])
+                texts.append(done['raw_text'])
 
             entry_params = {
                 'user': user,

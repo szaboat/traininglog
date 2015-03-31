@@ -26,11 +26,15 @@ class Command(BaseCommand):
             response = requests.get('https://idonethis.com/api/v0.1/dones/?done_date=%s' % date, headers=headers)
             dones = json.loads(response.content)
 
+            texts = []
             for done in dones['results']:
-                entry_params = {
-                    'user': user,
-                    'created': done['done_date'],
-                    'description': done['raw_text'],
-                }
-                Entry.objects.get_or_create(**entry_params)
-                print user.username, date, done['raw_text']
+                texts.add(done['raw_text'])
+
+            entry_params = {
+                'user': user,
+                'created': done['done_date'],
+                'description': " ".join([str(x) for x in texts]),
+            }
+
+            Entry.objects.get_or_create(**entry_params)
+            print user.username, date, done['raw_text']

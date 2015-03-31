@@ -30,11 +30,12 @@ class Command(BaseCommand):
             for done in dones['results']:
                 texts.append(done['raw_text'])
 
+            description = " ".join([str(x) for x in texts])
+
             entry_params = {
                 'user': user,
                 'created': done['done_date'],
-                'description': " ".join([str(x) for x in texts]),
+                'description': description,
             }
 
             Entry.objects.get_or_create(**entry_params)
-            print user.username, date, done['raw_text']
